@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  height: 90vh;
+}
+
+.shopList {
+  flex: 1;
+  margin: 0.5rem;
+}
+
+.productList {
+  flex: 3;
+  margin: 0.5rem;
+}

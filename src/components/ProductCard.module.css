@@ -1,0 +1,29 @@
+.card {
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.card:hover {
+  background-color: #cccccc;
+}
+
+.placeholder {
+  height: 200px;
+  width: 100%;
+}
+
+.addbutton {
+  border-style: solid;
+  border-color: black;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: black;
+  color: white;
+}
+
+.addbutton:active {
+  background-color: white;
+  color: black;
+}

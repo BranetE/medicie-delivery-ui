@@ -1,0 +1,30 @@
+.container {
+  padding: 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 5px;
+  overflow-y: scroll;
+  height: inherit;
+  box-sizing: border-box;
+}
+
+.element {
+  position: relative;
+  margin: 8px;
+  padding: 1rem;
+  font-size: 14pt;
+  border: inherit;
+  border-radius: inherit;
+}
+
+.element:hover {
+  /* color: white; */
+  background-color: #cccccc;
+}
+
+.element:active {
+  color: white;
+  background-color: black;
+}

@@ -1,0 +1,24 @@
+.navbar {
+  height: 4rem;
+  line-height: 4rem;
+  margin: 0;
+  color: white;
+  background-color: black;
+  list-style-type: none;
+}
+
+.navbutton {
+  margin: 0 0.5em;
+  padding: 5px;
+  font-size: 25pt;
+  display: inline;
+}
+
+.navbutton:hover {
+  background-color: #262626;
+}
+
+.navbutton:active {
+  color: black;
+  background-color: white;
+}
