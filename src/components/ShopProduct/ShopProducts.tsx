@@ -1,5 +1,5 @@
-import ProductCard from "./ProductCard";
-import styles from "./FlexContainer.module.css";
+import ProductCard from "../ProductCard/ProductCard";
+import styles from "./ShopProduct.module.css";
 
 interface ShopProductsProps {
   className?: string;
@@ -8,9 +8,9 @@ interface ShopProductsProps {
 
 const ShopProducts = (props: ShopProductsProps): JSX.Element => {
   const { data, className } = props;
-  const { containerHorizontal } = styles;
+  const { container } = styles;
   return (
-    <div className={`${containerHorizontal} ${className}`}>
+    <div className={`${container} ${className}`}>
       {data.map((productTitle: string) => (
         <ProductCard title={productTitle} />
       ))}

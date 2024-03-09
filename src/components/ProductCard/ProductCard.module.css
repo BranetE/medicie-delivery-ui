@@ -2,7 +2,7 @@
   text-align: center;
   padding: 1rem;
   border: 1px solid black;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
 .card:hover {
@@ -14,16 +14,16 @@
   width: 100%;
 }
 
-.addbutton {
+.addButton {
   border-style: solid;
   border-color: black;
-  border-radius: 8px;
+  border-radius: 5px;
   padding: 8px;
   background-color: black;
   color: white;
 }
 
-.addbutton:active {
+.addButton:active {
   background-color: white;
   color: black;
 }

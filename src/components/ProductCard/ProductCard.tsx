@@ -6,13 +6,13 @@ interface ProductCardProps {
 
 const ProductCard = (props: ProductCardProps): JSX.Element => {
   const { title } = props;
-  const { card, placeholder, addbutton } = styles;
+  const { card, placeholder, addButton } = styles;
 
   return (
     <div className={card}>
       <div className={placeholder}></div>
       <h3>{title}</h3>
-      <button className={addbutton}>Add To Cart</button>
+      <button className={addButton}>Add To Cart</button>
     </div>
   );
 };

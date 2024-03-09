@@ -1,5 +1,5 @@
-import ShopList from "../components/ShopList";
-import ShopProducts from "../components/ShopProducts";
+import ShopList from "../../components/ShopList/ShopList";
+import ShopProducts from "../../components/ShopProduct/ShopProducts";
 import styles from "./Shop.module.css";
 
 const Shop = (): JSX.Element => {
