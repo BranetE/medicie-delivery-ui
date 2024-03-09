@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  height: 80vh;
+}
+
+.userForm {
+  flex: 1;
+  margin: 0.5rem;
+}
+
+.productList {
+  flex: 1;
+  margin: 0.5rem;
+}
+
+label {
+  font-size: 14pt;
+  font-weight: bold;
+  margin-top: 5rem;
+}
+
+input {
+  height: 2rem;
+  font-size: 14pt;
+}
+
+.submitButton {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  height: 3rem;
+  width: 6rem;
+  font-size: large;
+  border-style: solid;
+  border-color: black;
+  border-radius: 5px;
+  padding: 8px;
+  background-color: black;
+  color: white;
+}
+
+.submitButton:active {
+  background-color: white;
+  color: black;
+}

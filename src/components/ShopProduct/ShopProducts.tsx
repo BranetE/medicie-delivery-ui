@@ -11,7 +11,7 @@ const ShopProducts = (props: ShopProductsProps): JSX.Element => {
   const { container } = styles;
   return (
     <div className={`${container} ${className}`}>
-      {data.map((productTitle: string) => (
+      {data.map((productTitle) => (
         <ProductCard title={productTitle} />
       ))}
     </div>

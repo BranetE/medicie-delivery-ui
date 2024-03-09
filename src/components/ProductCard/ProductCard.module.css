@@ -1,4 +1,6 @@
 .card {
+  max-width: 402px;
+  max-height: 335px;
   text-align: center;
   padding: 1rem;
   border: 1px solid black;
@@ -15,6 +17,7 @@
 }
 
 .addButton {
+  margin: auto;
   border-style: solid;
   border-color: black;
   border-radius: 5px;

@@ -1,0 +1,9 @@
+.container {
+  height: inherit;
+  box-sizing: border-box;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  border-radius: 5px;
+}
