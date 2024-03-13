@@ -1,34 +1,41 @@
+// import { useState } from "react";
 import CartProducts from "../../components/ShopProduct/CartProducts";
 import UserFormPart from "../../components/UserForm/UserForm";
 import styles from "./ShoppingCart.module.css";
+import { useCart } from "../../context/CartContext";
+
+// interface ShoppingCartFormData {
+//   name: string;
+//   email: string;
+//   phone: string;
+//   address: string;
+//   products: number[];
+// }
 
 const ShoppingCart = (): JSX.Element => {
   const { container, userForm, productList, submitButton } = styles;
+  // const [value, setValue] = useState<ShoppingCartFormData>({
+  //   name: "",
+  //   email: "",
+  //   phone: "",
+  //   address: "",
+  //   products: [],
+  // });
+
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setValue({ ...value, [e.target.name]: e.target.value });
+  // };
+
+  const { products } = useCart();
 
   return (
-    <form
-      action={(value) => {
-        console.log(value.target);
-      }}
-    >
+    <form>
       <div className={container}>
         <UserFormPart className={userForm} />
-        <CartProducts
-          className={productList}
-          data={[
-            { title: "product", price: 3 },
-            // { title: "product", price: 5 },
-            // { title: "product", price: 42 },
-            // { title: "product", price: 86 },
-            // { title: "product", price: 1 },
-            // { title: "product", price: 9 },
-          ]}
-        />
+        <CartProducts className={productList} data={products} />
       </div>
 
-      <button type="submit" className={submitButton}>
-        Submit
-      </button>
+      <input type="submit" className={submitButton} />
     </form>
   );
 };

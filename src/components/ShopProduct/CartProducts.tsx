@@ -1,9 +1,10 @@
+import { ProductProps } from "../../context/CartContext";
 import CheckOutProductCard from "../ProductCard/CheckOutProductCard";
 import styles from "./ShopProduct.module.css";
 
 interface CartProductProps {
   className?: string;
-  data: { price: number; title: string }[];
+  data: ProductProps[] | null;
 }
 
 const CartProducts = (props: CartProductProps): JSX.Element => {
@@ -12,8 +13,13 @@ const CartProducts = (props: CartProductProps): JSX.Element => {
 
   return (
     <div className={`${className} ${container}`}>
-      {data.map(({ title, price }) => (
-        <CheckOutProductCard title={title} price={price} />
+      {data?.map(({ name, price, quantity }) => (
+        <CheckOutProductCard
+          key={name}
+          title={name}
+          price={price}
+          quantity={quantity}
+        />
       ))}
     </div>
   );
