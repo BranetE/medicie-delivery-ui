@@ -6,11 +6,7 @@ const ShoppingCart = (): JSX.Element => {
   const { container, userForm, productList, submitButton } = styles;
 
   return (
-    <form
-      action={(value) => {
-        console.log(value.target);
-      }}
-    >
+    <form>
       <div className={container}>
         <UserFormPart className={userForm} />
         <CartProducts
