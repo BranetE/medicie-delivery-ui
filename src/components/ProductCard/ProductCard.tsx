@@ -1,3 +1,4 @@
+import { useCart } from "../../context/CartContext";
 import styles from "./ProductCard.module.css";
 
 interface ProductCardProps {
