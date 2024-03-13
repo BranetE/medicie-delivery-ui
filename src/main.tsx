@@ -10,8 +10,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Navigation />
     {/* <ProductCard title="Card Product" /> */}
-    {/* <Shop /> */}
-    <ShoppingCart />
+    <Shop />
+    {/* <ShoppingCart /> */}
     {/* <App /> */}
   </React.StrictMode>
 );

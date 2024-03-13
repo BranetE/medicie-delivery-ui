@@ -1,9 +1,10 @@
+import { ProductType } from "../../api/productApi";
 import ProductCard from "../ProductCard/ProductCard";
 import styles from "./ShopProduct.module.css";
 
 interface ShopProductsProps {
   className?: string;
-  data: string[];
+  data: ProductType[];
 }
 
 const ShopProducts = (props: ShopProductsProps): JSX.Element => {
@@ -11,8 +12,8 @@ const ShopProducts = (props: ShopProductsProps): JSX.Element => {
   const { container } = styles;
   return (
     <div className={`${container} ${className}`}>
-      {data.map((productTitle) => (
-        <ProductCard title={productTitle} />
+      {data.map((product) => (
+        <ProductCard title={product.title} />
       ))}
     </div>
   );

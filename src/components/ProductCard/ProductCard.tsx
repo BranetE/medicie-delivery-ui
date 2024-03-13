@@ -7,6 +7,7 @@ interface ProductCardProps {
 const ProductCard = (props: ProductCardProps): JSX.Element => {
   const { title } = props;
   const { card, placeholder, addButton } = styles;
+  const { addProduct } = useCart();
 
   return (
     <div className={card}>

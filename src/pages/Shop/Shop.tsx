@@ -1,49 +1,43 @@
-import ShopList from "../../components/ShopList/ShopList";
-import ShopProducts from "../../components/ShopProduct/ShopProducts";
+import { useEffect, useState } from "react";
+// import ShopProducts from "../../components/ShopProduct/ShopProducts";
 import styles from "./Shop.module.css";
+import shopApi, { ShopType } from "../../api/shopApi";
+import ShopProducts from "../../components/ShopProduct/ShopProducts";
+import productApi, { ProductType } from "../../api/productApi";
 
 const Shop = (): JSX.Element => {
-  const { container, shopList, productList } = styles;
+  const [shops, setShops] = useState<ShopType[]>([]);
+  const [activeShop, setActiveShop] = useState<ShopType>();
+  const [products, setProducts] = useState<ProductType[]>([]);
+  const { container, shopList, productList, element } = styles;
+
+  useEffect(() => {
+    shopApi.getShops().then((res) => setShops(res.data));
+  }, []);
+
+  useEffect(() => {
+    if (activeShop != undefined) {
+      productApi
+        .getProductsByShop(activeShop._id)
+        .then((res) => setProducts(res.data));
+    }
+  }, [activeShop]);
 
   return (
     <div className={container}>
-      <ShopList
-        className={shopList}
-        data={[
-          "shop1",
-          "shopshopshop",
-          "shop3",
-          "shop4",
-          "shop5",
-          "shop1",
-          "shopshopshop",
-          "shop3",
-          "shop4",
-          "shop5",
-          "shop1",
-          "shopshopshop",
-          "shop3",
-          "shop4",
-          "shop5",
-        ]}
-      />
-      <ShopProducts
-        className={productList}
-        data={[
-          "pr1",
-          "product",
-          "pr3",
-          "pr4",
-          "pr1",
-          "product",
-          "pr3",
-          "pr4",
-          "pr1",
-          "product",
-          "pr3",
-          "pr4",
-        ]}
-      />
+      <div className={`${shopList}`}>
+        <h2>Shops:</h2>
+        {shops.map((shop) => (
+          <button
+            key={shop._id}
+            className={element}
+            onClick={() => setActiveShop(shop)}
+          >
+            {shop.title}
+          </button>
+        ))}
+      </div>
+      <ShopProducts className={productList} data={products} />
     </div>
   );
 };

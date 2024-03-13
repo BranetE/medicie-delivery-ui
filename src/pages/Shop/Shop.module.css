@@ -12,3 +12,11 @@
   flex: 3;
   margin: 0.5rem;
 }
+
+.element {
+  margin: 8px;
+  padding: 1rem;
+  font-size: 14pt;
+  border: inherit;
+  border-radius: inherit;
+}
