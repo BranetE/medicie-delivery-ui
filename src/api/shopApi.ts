@@ -1,15 +1,11 @@
+import { Shop } from "../types/Shop";
 import { instance } from "./axiosConfig";
 
 const prefix = "/shop";
 
-export type ShopType = {
-  _id: string;
-  title: string;
-};
-
 const shopApi = {
   getShops() {
-    return instance.get<ShopType[]>(prefix);
+    return instance.get<Shop[]>(prefix);
   },
 };
 

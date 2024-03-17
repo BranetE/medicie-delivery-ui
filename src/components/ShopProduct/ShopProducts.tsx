@@ -13,7 +13,12 @@ const ShopProducts = (props: ShopProductsProps): JSX.Element => {
   return (
     <div className={`${container} ${className}`}>
       {data.map((product) => (
-        <ProductCard title={product.title} />
+        <ProductCard
+          key={product._id}
+          title={product.title}
+          price={product.price}
+          shop={product.shop}
+        />
       ))}
     </div>
   );

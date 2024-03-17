@@ -9,7 +9,7 @@
 }
 
 .productList {
-  flex: 1;
+  flex: 3;
   margin: 0.5rem;
 }
 
@@ -42,4 +42,10 @@ input {
 .submitButton:active {
   background-color: white;
   color: black;
+}
+
+.fullPrice {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 12rem;
 }

@@ -9,7 +9,7 @@ interface ShopListProps {
   data: ShopType[];
 }
 const ShopList = (props: ShopListProps): JSX.Element => {
-  const { data, className } = props;
+  const { data } = props;
   const [activeShop, setActiveShop] = useState<ShopType>();
   const [products, setProducts] = useState<ProductType[]>([]);
   const { container, element } = styles;
@@ -23,20 +23,17 @@ const ShopList = (props: ShopListProps): JSX.Element => {
   }, [activeShop]);
 
   return (
-    <div>
-      <div className={`${container} ${sh}`}>
-        <h2>Shops:</h2>
-        {data.map((shop) => (
-          <button
-            key={shop._id}
-            className={element}
-            onClick={() => setActiveShop(shop)}
-          >
-            {shop.title}
-          </button>
-        ))}
-      </div>
-      <ShopProducts className="" data={products} />
+    <div className={container}>
+      <h2>Shops:</h2>
+      {data.map((shop) => (
+        <button
+          key={shop._id}
+          className={element}
+          onClick={() => setActiveShop(shop)}
+        >
+          {shop.title}
+        </button>
+      ))}
     </div>
   );
 };

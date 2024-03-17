@@ -6,52 +6,43 @@ import {
   useMemo,
   useState,
 } from "react";
-
-export type UserProps = {
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-};
-
-export type ProductProps = {
-  name: string;
-  price: number;
-  quantity: number;
-};
+import { Product } from "../types/Product";
+import { User } from "../types/User";
 
 interface CartContextProps {
-  userData: UserProps | null;
-  products: ProductProps[] | null;
-  setUser: React.Dispatch<React.SetStateAction<UserProps>>;
-  addProduct: (product: ProductProps) => void;
+  userData: User | null;
+  products: Product[] | null;
+  setUser: React.Dispatch<React.SetStateAction<User>>;
+  addProduct: (product: Product) => void;
   changeQuantity: (name: string, newQuantity: number) => void;
   removeProduct: (name: string) => void;
 }
 
-export const INITIAL_STATE_USER: UserProps = {
+export const INITIAL_STATE_USER: User = {
   name: "",
   email: "",
   phone: "",
   address: "",
 };
 
-export const INITIAL_STATE_PRODUCTS: ProductProps[] = [
+export const INITIAL_STATE_PRODUCTS: Product[] = [
   {
-    name: "Prdct",
+    title: "",
     price: 900,
+    shop: "",
     quantity: 1,
   },
   {
-    name: "Prdct2",
+    title: "",
     price: 800,
+    shop: "",
     quantity: 1,
   },
 ];
 
 const INITIAL_STATE_CONTEXT: CartContextProps = {
   userData: null,
-  products: INITIAL_STATE_PRODUCTS,
+  products: [],
   setUser: () => {},
   addProduct: () => {},
   changeQuantity: () => {},
@@ -65,13 +56,13 @@ interface CartContextProviderProps {
 const CartContext = createContext<CartContextProps>(INITIAL_STATE_CONTEXT);
 
 const CartContextProvider = (props: CartContextProviderProps): JSX.Element => {
-  const [user, setUser] = useState<UserProps>(
+  const [user, setUser] = useState<User>(
     JSON.parse(
       localStorage.getItem("user") || JSON.stringify(INITIAL_STATE_USER)
     )
   );
-  const [products, setProducts] = useState<ProductProps[]>(
-    INITIAL_STATE_PRODUCTS
+  const [products, setProducts] = useState<Product[]>(
+    JSON.parse(localStorage.getItem("products") || "[]")
   );
 
   useEffect(() => {
@@ -84,20 +75,28 @@ const CartContextProvider = (props: CartContextProviderProps): JSX.Element => {
     localStorage.setItem("products", JSON.stringify(products));
   });
 
-  const addProduct = (product: ProductProps) => {
-    setProducts((prevState) => [...prevState, product]);
+  const addProduct = (product: Product) => {
+    // const foundProduct = products.find((p) => p.title == product.title);
+    // if (foundProduct && foundProduct.quantity) {
+    //   changeQuantity(foundProduct.title, foundProduct.quantity + 1);
+    if (product.quantity) {
+      changeQuantity(product.title, product.quantity + 1);
+    } else {
+      product.quantity = 1;
+      setProducts((prevState) => [...prevState, product]);
+    }
   };
 
-  const removeProduct = (productName: string) => {
+  const removeProduct = (productTitle: string) => {
     setProducts((prevState) =>
-      prevState.filter((item) => item.name != productName)
+      prevState.filter((item) => item.title != productTitle)
     );
   };
 
   const changeQuantity = (name: string, newQuantity: number) => {
     setProducts(
       products.map((item) =>
-        item.name === name ? { ...item, quantity: newQuantity } : item
+        item.title === name ? { ...item, quantity: newQuantity } : item
       )
     );
   };
@@ -111,7 +110,7 @@ const CartContextProvider = (props: CartContextProviderProps): JSX.Element => {
       changeQuantity: changeQuantity,
       removeProduct: removeProduct,
     }),
-    []
+    [user, products]
   );
 
   const { children } = props;
